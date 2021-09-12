@@ -55,20 +55,30 @@ public class MyLottoTest {
         if(lottoNums.size() <= 0) {
             throw new Exception("로또 구매를 실패했습니다.");
         }
-        System.out.println(lottoNums.toString());
-
-        money = 999;
-        lottoNums = new ArrayList<>();
-
-        while (money >= 1000) {
-            lottoNums = new ArrayList<>(Arrays.asList(11,22,33,44,45,2));
-            break;
-        }
-        if(lottoNums.size() <= 0) {
-            throw new Exception("로또 구매를 실패했습니다.");
-        }
-        System.out.println(lottoNums.toString());
     }
+
+    public List<List<Integer>> testGetMyLottos() throws Exception{
+
+        List<List<Integer>> testMyLottos = new ArrayList<>();
+        testMyLottos.add(new ArrayList<>(Arrays.asList(1,2,3,4,5,6)));
+        testMyLottos.add(new ArrayList<>(Arrays.asList(4,8,12,34,41,5)));
+        testMyLottos.add(new ArrayList<>(Arrays.asList(9,4,1,2,7,24)));
+        testMyLottos.add(new ArrayList<>(Arrays.asList(21,32,40,1,11,2)));
+
+        if(testMyLottos == null) {
+            throw new Exception("구매한 로또가 없습니다.");
+        }
+        testMyLottos.add(new ArrayList<>(Arrays.asList(21,32,40,1,11)));
+        testMyLottos.add(new ArrayList<>(Arrays.asList(32,40,1,11)));
+        testMyLottos = null;
+        if(testMyLottos == null) {
+            throw new Exception("구매한 로또가 없습니다.");
+        }
+        System.out.println("구매한 로또 목록 반환 성공");
+        return testMyLottos;
+    }
+
+
 
     public static void main(String[] args) {
 
@@ -78,9 +88,9 @@ public class MyLottoTest {
 
             test.testMyLotto();
             test.testGetMoney();
-            while (test.testBuyLottoCheck()) {
-                test.testBuyLotto();
-            }
+            test.testBuyLottoCheck();
+            test.testBuyLotto();
+            test.testGetMyLottos();
 
         } catch (Exception e) {
             System.out.println("실패");

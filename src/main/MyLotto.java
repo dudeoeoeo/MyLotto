@@ -30,7 +30,12 @@ public class MyLotto {
             lottoNums.add(i);
         }
         Collections.shuffle(lottoNums);
-        myLottos.add(lottoNums.subList(0, 6));
+        lottoNums = lottoNums.subList(0, 6);
+        this.myLottos.add(lottoNums);
         this.money = this.money - 1000;
+    }
+
+    public List<List<Integer>> getMyLottos() {
+        return this.myLottos;
     }
 }
