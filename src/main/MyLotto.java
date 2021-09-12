@@ -38,4 +38,15 @@ public class MyLotto {
     public List<List<Integer>> getMyLottos() {
         return this.myLottos;
     }
+
+    public int [] StringToInt(String wonLottoNums) {
+        String [] wonLottoArr = wonLottoNums.replaceAll(",", "").split(" ");
+        int [] lottoNums = new int[wonLottoArr.length];
+
+        for(int i = 0; i < wonLottoArr.length; i++) {
+            lottoNums[i] = Integer.parseInt(wonLottoArr[i]);
+        }
+
+        return lottoNums;
+    }
 }

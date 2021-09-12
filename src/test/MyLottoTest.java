@@ -70,14 +70,34 @@ public class MyLottoTest {
         }
         testMyLottos.add(new ArrayList<>(Arrays.asList(21,32,40,1,11)));
         testMyLottos.add(new ArrayList<>(Arrays.asList(32,40,1,11)));
-        testMyLottos = null;
-        if(testMyLottos == null) {
-            throw new Exception("구매한 로또가 없습니다.");
-        }
-        System.out.println("구매한 로또 목록 반환 성공");
+
+        System.out.println("구매한 로또 "+testMyLottos.size()+"개 반환 성공");
         return testMyLottos;
     }
+    public void testStringToInt() throws Exception{
+        String wonLottoNums = "1, 2, 3, 4, 5, 6";
+        String [] wonLottoArr = wonLottoNums.replaceAll(",", "").split(" ");
+        int [] lottoNums = new int[wonLottoArr.length];
+        for(int i = 0; i < wonLottoArr.length; i++) {
+            lottoNums[i] = Integer.parseInt(wonLottoArr[i]);
+        }
+        if(lottoNums.length != 6) {
+            throw new Exception("당첨 번호 개수가 6개가 아닙니다.");
+        }
+        System.out.println("당첨 번호: "+Arrays.toString(lottoNums));
 
+        wonLottoNums = "1, 2, 3, 4, 5";
+        wonLottoNums = wonLottoNums.replaceAll(",", "");
+        wonLottoArr = wonLottoNums.split(" ");
+        lottoNums = new int[wonLottoArr.length];
+        for(int i = 0; i < wonLottoArr.length; i++) {
+            lottoNums[i] = Integer.parseInt(wonLottoArr[i]);
+        }
+        if(lottoNums.length != 6) {
+            throw new Exception("당첨 번호 개수가 6개가 아닙니다.");
+        }
+        System.out.println("당첨 번호: "+Arrays.toString(lottoNums));
+    }
 
 
     public static void main(String[] args) {
@@ -91,6 +111,7 @@ public class MyLottoTest {
             test.testBuyLottoCheck();
             test.testBuyLotto();
             test.testGetMyLottos();
+            test.testStringToInt();
 
         } catch (Exception e) {
             System.out.println("실패");
