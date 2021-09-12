@@ -85,18 +85,34 @@ public class MyLottoTest {
             throw new Exception("당첨 번호 개수가 6개가 아닙니다.");
         }
         System.out.println("당첨 번호: "+Arrays.toString(lottoNums));
+    }
+    public void testWonLottoCheck() throws Exception {
+        int [] wonLottoNums = {1, 2, 3, 4, 5, 6};
+        if(wonLottoNums.length != 6) {
+            throw new Exception("로또 당첨번호가 6자리가 아닙니다.");
+        }
+        List<List> myLottos = new ArrayList<>();
+        myLottos.add(new ArrayList(Arrays.asList(1, 3, 5, 11, 32, 42)));
+        myLottos.add(new ArrayList(Arrays.asList(16, 9, 12, 16, 32, 42)));
+        myLottos.add(new ArrayList(Arrays.asList(7, 4, 30, 1, 32, 42)));
+        myLottos.add(new ArrayList(Arrays.asList(22, 2, 8, 11, 38, 44)));
+        myLottos.add(new ArrayList(Arrays.asList(34, 1, 5, 3, 4, 24)));
+        myLottos.add(new ArrayList(Arrays.asList(2, 1, 5, 3, 4, 6)));
+        myLottos.add(new ArrayList(Arrays.asList(6, 5, 4, 3, 2, 1)));
+        int [] wonLottos = new int[7];
 
-        wonLottoNums = "1, 2, 3, 4, 5";
-        wonLottoNums = wonLottoNums.replaceAll(",", "");
-        wonLottoArr = wonLottoNums.split(" ");
-        lottoNums = new int[wonLottoArr.length];
-        for(int i = 0; i < wonLottoArr.length; i++) {
-            lottoNums[i] = Integer.parseInt(wonLottoArr[i]);
+        for (int i = 0; i < myLottos.size(); i++) {
+            List<Integer> lotto = myLottos.get(i);
+            int cnt = 0;
+            for(int j = 0; j < wonLottoNums.length; j++) {
+                if(lotto.contains(wonLottoNums[j])) {
+                    System.out.println(wonLottoNums[j]);
+                    cnt++;
+                }
+            }
+            wonLottos[cnt]++;
         }
-        if(lottoNums.length != 6) {
-            throw new Exception("당첨 번호 개수가 6개가 아닙니다.");
-        }
-        System.out.println("당첨 번호: "+Arrays.toString(lottoNums));
+        System.out.println("로또 당첨 확인 성공: "+Arrays.toString(wonLottos));
     }
 
 
@@ -112,6 +128,7 @@ public class MyLottoTest {
             test.testBuyLotto();
             test.testGetMyLottos();
             test.testStringToInt();
+            test.testWonLottoCheck();
 
         } catch (Exception e) {
             System.out.println("실패");

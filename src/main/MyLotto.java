@@ -49,4 +49,19 @@ public class MyLotto {
 
         return lottoNums;
     }
+
+    public int [] wonLottoCheck(int [] wonLottoNums) {
+        int [] wonLottos = new int[7];
+        for (int i = 0; i < this.myLottos.size(); i++) {
+            List<Integer> lotto = myLottos.get(i);
+            int cnt = 0;
+            for(int j = 0; j < wonLottoNums.length; j++) {
+                if(lotto.contains(wonLottoNums[j])) {
+                    cnt++;
+                }
+            }
+            wonLottos[cnt]++;
+        }
+        return wonLottos;
+    }
 }
