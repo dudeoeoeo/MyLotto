@@ -1,4 +1,5 @@
-import java.util.Arrays;
+package main;
+
 import java.util.Scanner;
 
 public class InputView {
