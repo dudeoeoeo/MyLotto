@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class MyLotto {
         return this.myLottos;
     }
 
-    public int [] StringToInt(String wonLottoNums) {
+    public int [] stringToInt(String wonLottoNums) {
         String [] wonLottoArr = wonLottoNums.replaceAll(",", "").split(" ");
         int [] lottoNums = new int[wonLottoArr.length];
 
@@ -76,5 +77,29 @@ public class MyLotto {
         double profitRate = (double) totalPrize / investment;
 
         return profitRate;
+    }
+
+    public static void main(String[] args) {
+
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
+        MyLotto myLotto = new MyLotto(inputView.setMoney());
+
+        while (myLotto.buyLottoCheck()) {
+            myLotto.buyLotto();
+        }
+
+        resultView.myLottoCheck(myLotto.getMyLottos());
+
+        String wonLottoNums = inputView.getWonLottoNum();
+
+        int [] wonLottoNum = myLotto.stringToInt(wonLottoNums);
+
+        int [] wonLottoCheckArr = myLotto.wonLottoCheck(wonLottoNum);
+
+        double myProfit = myLotto.getProfitRate(wonLottoCheckArr);
+
+        resultView.winLottoCheck(wonLottoCheckArr, myProfit);
+
     }
 }
