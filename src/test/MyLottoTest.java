@@ -15,22 +15,48 @@ public class MyLottoTest {
     public void testGetMoney() throws Exception {
         MyLotto myLotto = new MyLotto(5000);
         if(myLotto.getMoney() != 5000) {
-            new Exception("계정 잔고가 5000원이 아닙니다.");
+            throw new Exception("계정 잔고가 5000원이 아닙니다.");
         }
         System.out.println("계정 잔고가 5000원이 맞습니다.");
 
         myLotto = new MyLotto(15000);
         if(myLotto.getMoney() != 15000) {
-            new Exception("계정 잔고가 15000원이 아닙니다.");
+            throw new Exception("계정 잔고가 15000원이 아닙니다.");
         }
         System.out.println("계정 잔고가 15000원이 맞습니다.");
 
         myLotto = new MyLotto(12000);
         if(myLotto.getMoney() != 12000) {
-            new Exception("계정 잔고가 12000원이 아닙니다.");
+            throw new Exception("계정 잔고가 12000원이 아닙니다.");
         }
         System.out.println("계정 잔고가 12000원이 맞습니다.");
+    }
+    public boolean testBuyLotto() throws Exception{
+        MyLotto myLotto = new MyLotto(5000);
+        if(myLotto.getMoney() < 1000) {
+            throw new Exception("계정 잔고가 부족하여 로또를 구매할 수 없습니다.");
+        }
+        System.out.println("로또를 구매하셨습니다. 현재 계좌 잔고: "+myLotto.getMoney());
 
+        myLotto = new MyLotto(99);
+        if(myLotto.getMoney() < 1000) {
+            throw new Exception("계정 잔고가 부족하여 로또를 구매할 수 없습니다.");
+        }
+        System.out.println("로또를 구매하셨습니다. 현재 계좌 잔고: "+myLotto.getMoney());
+
+        myLotto = new MyLotto(100);
+        if(myLotto.getMoney() < 1000) {
+            throw new Exception("계정 잔고가 부족하여 로또를 구매할 수 없습니다.");
+        }
+        System.out.println("로또를 구매하셨습니다. 현재 계좌 잔고: "+myLotto.getMoney());
+
+        myLotto = new MyLotto(1000);
+        if(myLotto.getMoney() < 1000) {
+            throw new Exception("계정 잔고가 부족하여 로또를 구매할 수 없습니다.");
+        }
+        System.out.println("로또를 구매하셨습니다. 현재 계좌 잔고: "+myLotto.getMoney());
+
+        return true;
     }
 
     public static void main(String[] args) {
@@ -41,6 +67,7 @@ public class MyLottoTest {
 
             test.testMyLotto();
             test.testGetMoney();
+            test.testBuyLotto();
 
         } catch (Exception e) {
             System.out.println("실패");
