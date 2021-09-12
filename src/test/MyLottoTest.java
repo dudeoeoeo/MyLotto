@@ -114,7 +114,14 @@ public class MyLottoTest {
         }
         System.out.println("로또 당첨 확인 성공: "+Arrays.toString(wonLottos));
     }
+    public void testGetProfitRate() {
+        int totalPrize = 2000000000;
+        int investment = 50000;
+        System.out.println(totalPrize);
+        double profitRate = (double) totalPrize / investment;
 
+        System.out.println(profitRate);
+    }
 
     public static void main(String[] args) {
 
@@ -129,6 +136,7 @@ public class MyLottoTest {
             test.testGetMyLottos();
             test.testStringToInt();
             test.testWonLottoCheck();
+            test.testGetProfitRate();
 
         } catch (Exception e) {
             System.out.println("실패");

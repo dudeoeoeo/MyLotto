@@ -64,4 +64,17 @@ public class MyLotto {
         }
         return wonLottos;
     }
+
+    public double getProfitRate(int [] wonLottos) {
+        int totalPrize = 0;
+        int investment = 0;
+        int [] prizeArr = {0, 0, 0, 5000, 50000, 1500000, 2000000000};
+        for(int i = 0; i < prizeArr.length; i++) {
+            totalPrize = totalPrize + prizeArr[i] * wonLottos[i];
+            investment = investment + 1000 * wonLottos[i];
+        }
+        double profitRate = (double) totalPrize / investment;
+
+        return profitRate;
+    }
 }
